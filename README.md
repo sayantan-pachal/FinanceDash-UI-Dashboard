@@ -59,6 +59,16 @@ As a developer, I focused on **Clean Code** principles:
 
 ---
 
+## 🧭 Routing & Layout Design
+
+- The application uses layout-based routing to separate public and dashboard views.
+- The Landing Page is rendered as a standalone route (`/`) without header or footer.
+- All dashboard-related pages are rendered inside a shared layout using nested routes (`Outlet`), ensuring consistent navigation.
+- User actions (Profile, Settings, Logout) are accessible via a contextual user menu.
+- The Logout action redirects users back to the Landing Page, simulating a real-world dashboard flow.
+
+---
+
 ## ⚠️ Assumptions & Limitations
 
 - This is a frontend-only project with no backend or authentication.
@@ -73,7 +83,7 @@ To get a local copy up and running, follow these simple steps:
 
 1.  **Clone the Repo**
     ```bash
-    git clone [https://github.com/sayantan-pachal/FinanceDash-UI-Dashboard.git](https://github.com/sayantan-pachal/FinanceDash-UI-Dashboard.git)
+    git clone https://github.com/sayantan-pachal/FinanceDash-UI-Dashboard.git
     ```
 2.  **Install NPM packages**
     ```bash
