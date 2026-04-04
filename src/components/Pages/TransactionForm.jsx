@@ -100,7 +100,7 @@ const TransactionForm = ({ onClose, onSubmit, initialData }) => {
               <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Category</label>
               <input
                 name="category"
-                list="category-options" // 2. Link to the datalist ID
+                list="category-options" // Link to the datalist ID
                 placeholder="Select or Type..."
                 required
                 value={form.category}
@@ -109,7 +109,7 @@ const TransactionForm = ({ onClose, onSubmit, initialData }) => {
                 className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none dark:bg-slate-800 dark:border-slate-700 dark:text-white"
               />
 
-              {/* 3. The Dropdown Menu (Datalist) */}
+              {/* The Dropdown Menu (Datalist) */}
               <datalist id="category-options">
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat} />

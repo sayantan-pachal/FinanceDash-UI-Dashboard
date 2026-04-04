@@ -15,7 +15,6 @@ const Support = () => (
                 </a>
 
                 <a href="https://github.com/sayantan-pachal" target="_blank" className="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 hover:border-emerald-500 transition-all group">
-                    {/* <Github className="mb-4 text-emerald-600" size={24} /> */}
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 640"

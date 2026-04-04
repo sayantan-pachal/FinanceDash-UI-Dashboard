@@ -48,7 +48,6 @@ const Footer = () => {
               rel="noreferrer"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 text-gray-500 transition-all hover:bg-blue-50 hover:text-blue-600 dark:bg-slate-900 dark:text-slate-500 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
             >
-              {/* <Github size={16} /> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 612 612"

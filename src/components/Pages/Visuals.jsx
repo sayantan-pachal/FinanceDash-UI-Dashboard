@@ -24,10 +24,10 @@ export const BalanceTrend = () => {
   const chartData = useMemo(() => {
     if (!allTransactions.length) return [];
 
-    // 1. Sort by date
+    // Sort by date
     const sorted = [...allTransactions].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    // 2. Reduce to daily totals to avoid multiple points on the same date
+    // Reduce to daily totals to avoid multiple points on the same date
     const dailyData = sorted.reduce((acc, curr) => {
       const lastEntry = acc[acc.length - 1];
       const amount = curr.type === 'income' ? curr.amount : -curr.amount;

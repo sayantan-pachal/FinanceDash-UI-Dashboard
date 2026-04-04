@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDashboard } from '../context/DashboardContext';
 import ThemeToggle from "./ThemeToggle";
-import { User, ShieldCheck, Eye, Layout, LogOut, Settings, Key, UserCircle} from 'lucide-react';
+import { User, ShieldCheck, Eye, Layout, LogOut, Settings, Key, UserCircle } from 'lucide-react';
 
 const Header = () => {
   const { role, setRole } = useDashboard();
@@ -21,7 +21,6 @@ const Header = () => {
   const avatarBg = role === 'admin' ? 'd1fae5' : 'dbeafe';
 
   const handleLogout = () => {
-    // Add your logout logic here
     setIsMenuOpen(false);
     navigate('/');
   };
@@ -50,8 +49,8 @@ const Header = () => {
               key={id}
               onClick={() => setRole(id)}
               className={`group flex items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-bold transition-all duration-300 ${role === id
-                  ? 'bg-white shadow-md text-blue-600 dark:bg-slate-800 dark:text-blue-400'
-                  : 'text-gray-500 hover:bg-gray-200/50 dark:text-slate-500 dark:hover:bg-slate-800/40'
+                ? 'bg-white shadow-md text-blue-600 dark:bg-slate-800 dark:text-blue-400'
+                : 'text-gray-500 hover:bg-gray-200/50 dark:text-slate-500 dark:hover:bg-slate-800/40'
                 }`}
             >
               <Icon size={14} className={role === id ? "animate-pulse" : ""} />
@@ -78,8 +77,8 @@ const Header = () => {
               {/* Avatar Container */}
               <div
                 className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ${role === 'admin'
-                    ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
-                    : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                  ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
+                  : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                   }`}
               >
                 {/* The Centered Icon */}

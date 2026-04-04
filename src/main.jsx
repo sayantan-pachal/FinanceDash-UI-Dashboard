@@ -14,16 +14,15 @@ import Support from './components/Others/Support.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/'>
-      {/* 1. The Intro/Landing Page (Standalone) */}
+      {/* The Intro/Landing Page (Standalone) */}
       <Route index element={<Home />} />
-      {/* 2. The Dashboard Protected Area (Wrapped in Sidebar/Header Layout) */}
+      {/* The Dashboard Protected Area */}
       <Route element={<Layout />}>
         <Route path='dashboard' element={<DashboardHome />} />
         <Route path="/privacy" element={<Privacy />} />
-<Route path="/terms" element={<Terms />} />
-<Route path="/support" element={<Support />} />
-        {/* You can add more routes here like 'profile' or 'settings' later */}
-        {/* 3. 404 - The "Catch-All" route */}
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/support" element={<Support />} />
+        {/* 404 */}
         <Route path='*' element={<Edgecase />} />
       </Route>
     </Route>
@@ -32,7 +31,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* Wrap the entire provider here so data persists across all routes */}
     <DashboardProvider>
       <RouterProvider router={router} />
     </DashboardProvider>

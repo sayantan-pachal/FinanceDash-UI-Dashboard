@@ -3,14 +3,12 @@ import StatCard from '../StatCard/StatCard';
 import TransactionTable from '../Pages/TransactionTable';
 import { useDashboard } from '../context/DashboardContext';
 import { Lightbulb, ArrowUpRight, TrendingUp, DownloadCloud } from 'lucide-react';
-import { BalanceTrend, CategoryPie } from '../Pages/Visuals'; 
+import { BalanceTrend, CategoryPie } from '../Pages/Visuals';
 
 const DashboardHome = () => {
     const { transactions, allTransactions } = useDashboard();
 
-    // ==========================================
     // Memoized Derived Data
-    // ==========================================
     const { totalIncome, totalExpense, highestExpense, savingsRate } = useMemo(() => {
         const expenses = transactions.filter(t => t.type === 'expense');
         const income = transactions.filter(t => t.type === 'income');
@@ -22,15 +20,15 @@ const DashboardHome = () => {
             ? expenses.reduce((max, t) => (t.amount > max.amount ? t : max))
             : null;
 
-        const rate = totalIn > 0 
-            ? Math.round(((totalIn - totalEx) / totalIn) * 100) 
+        const rate = totalIn > 0
+            ? Math.round(((totalIn - totalEx) / totalIn) * 100)
             : 0;
 
-        return { 
-            totalIncome: totalIn, 
-            totalExpense: totalEx, 
-            highestExpense: highestEx, 
-            savingsRate: rate 
+        return {
+            totalIncome: totalIn,
+            totalExpense: totalEx,
+            highestExpense: highestEx,
+            savingsRate: rate
         };
     }, [transactions]);
 
@@ -48,14 +46,14 @@ const DashboardHome = () => {
     return (
         <div className="min-h-screen space-y-8 p-6 transition-colors md:p-10 animate-in fade-in duration-500 bg-gray-50 dark:bg-[linear-gradient(180deg,#0f1724,#05060a_60%)]">
 
-            {/* 1. Summary Cards */}
+            {/* Summary Cards */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <StatCard title="Total Balance" type="balance" />
                 <StatCard title="Total Income" type="income" />
                 <StatCard title="Total Expenses" type="expense" />
             </div>
 
-            {/* 2. Main Dashboard Grid */}
+            {/* Main Dashboard Grid */}
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
                 {/* Left Side: Chart & Table */}
@@ -81,7 +79,7 @@ const DashboardHome = () => {
                 {/* Right Side: Sidebar Insights */}
                 <div className="space-y-6">
                     {/* Premium Export Button */}
-                    <button 
+                    <button
                         onClick={exportToCSV}
                         className="group flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-gray-200 bg-white/50 p-5 text-sm font-bold text-gray-500 transition-all hover:border-blue-400 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-blue-500 dark:hover:text-blue-400"
                     >

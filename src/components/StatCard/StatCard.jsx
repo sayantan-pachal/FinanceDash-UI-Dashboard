@@ -5,7 +5,7 @@ import { Wallet, TrendingUp, TrendingDown } from 'lucide-react';
 const StatCard = ({ title, type }) => {
     const { totals } = useDashboard();
 
-    // 1. Memoized Config
+    // Memoized Config
     const config = useMemo(() => ({
         balance: {
             value: totals.balance,
@@ -32,7 +32,7 @@ const StatCard = ({ title, type }) => {
 
     const { value, icon, bgColor, barColor } = config[type];
 
-    // 2. Currency Formatter (Fixed for potentially null/undefined values)
+    // Currency Formatter (Fixed for potentially null/undefined values)
     const formatCurrency = (amount = 0) => {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -41,7 +41,7 @@ const StatCard = ({ title, type }) => {
         }).format(amount);
     };
 
-    // 3. Dynamic Progress (A thoughtful touch for the evaluator)
+    // Dynamic Progress (A thoughtful touch for the evaluator)
     // For expenses, show it relative to income. For others, keep it at 100%.
     const progressWidth = useMemo(() => {
         if (type === 'expense' && totals.income > 0) {
@@ -64,7 +64,7 @@ const StatCard = ({ title, type }) => {
                         {formatCurrency(value)}
                     </h3>
                 </div>
-                
+
                 <div className={`flex items-center justify-center rounded-2xl ${bgColor} p-4 transition-transform duration-300 group-hover:scale-110`}>
                     {icon}
                 </div>
@@ -72,8 +72,8 @@ const StatCard = ({ title, type }) => {
 
             {/* Bottom Progress Bar */}
             <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
-                <div 
-                    className={`h-full transition-all duration-700 ease-out ${barColor}`} 
+                <div
+                    className={`h-full transition-all duration-700 ease-out ${barColor}`}
                     style={{ width: progressWidth }}
                 />
             </div>

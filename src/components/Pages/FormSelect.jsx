@@ -22,7 +22,7 @@ const FormSelect = ({ value, onChange, name }) => {
   }, []);
 
   const handleSelect = (optionValue) => {
-    // Create a mock event object to stay compatible with your handleChange function
+    // Create a mock event object to stay compatible with handleChange function
     onChange({
       target: {
         name: name,
@@ -57,8 +57,8 @@ const FormSelect = ({ value, onChange, name }) => {
               type="button"
               onClick={() => handleSelect(option.value)}
               className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm transition-colors ${value === option.value
-                  ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400'
-                  : 'text-gray-600 hover:bg-gray-50 dark:text-slate-400 dark:hover:bg-slate-800/50'
+                ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400'
+                : 'text-gray-600 hover:bg-gray-50 dark:text-slate-400 dark:hover:bg-slate-800/50'
                 }`}
             >
               <div className="flex items-center gap-3">

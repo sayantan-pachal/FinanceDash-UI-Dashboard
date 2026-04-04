@@ -6,34 +6,32 @@ import { INITIAL_TRANSACTIONS } from '../../Data/mockData';
 const DashboardContext = createContext();
 
 export const DashboardProvider = ({ children }) => {
-  // 1. Initialize State with a Lazy Initializer
+  // Initialize State with a Lazy Initializer
   const [transactions, setTransactions] = useState(() => {
-  try {
-    const saved = localStorage.getItem('finance_data');
-    const parsed = saved ? JSON.parse(saved) : null;
+    try {
+      const saved = localStorage.getItem('finance_data');
+      const parsed = saved ? JSON.parse(saved) : null;
 
-    // If there's no data OR the saved data is noticeably shorter than our new mock data
-    if (!parsed || parsed.length < INITIAL_TRANSACTIONS.length) {
-      return INITIAL_TRANSACTIONS; 
+      // If there's no data OR the saved data is noticeably shorter than our new mock data
+      if (!parsed || parsed.length < INITIAL_TRANSACTIONS.length) {
+        return INITIAL_TRANSACTIONS;
+      }
+      return parsed;
+    } catch (error) {
+      return INITIAL_TRANSACTIONS;
     }
-    return parsed;
-  } catch (error) {
-    return INITIAL_TRANSACTIONS;
-  }
-});
+  });
 
   const [role, setRole] = useState('admin');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('all');
 
-  // 2. Persistent Storage Sync
+  // Persistent Storage Sync
   useEffect(() => {
     localStorage.setItem('finance_data', JSON.stringify(transactions));
   }, [transactions]);
 
-  /* =========================
-      Computed Totals (Memoized)
-  ========================== */
+  // Computed Totals (Memoized)
   const totals = useMemo(() => {
     const results = transactions.reduce((acc, t) => {
       const amt = Number(t.amount) || 0; // Safety check for numeric values
@@ -48,29 +46,25 @@ export const DashboardProvider = ({ children }) => {
     };
   }, [transactions]);
 
-  /* =========================
-      Filtered Transactions
-  ========================== */
+  // Filtered Transactions
   const filteredTransactions = useMemo(() => {
     return transactions.filter(t => {
-      const matchesSearch = t.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                            t.category.toLowerCase().includes(searchTerm.toLowerCase()); // Added category search
+      const matchesSearch = t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        t.category.toLowerCase().includes(searchTerm.toLowerCase()); // Added category search
       const matchesType = filterType === 'all' || t.type === filterType;
       return matchesSearch && matchesType;
     });
   }, [transactions, searchTerm, filterType]);
 
-  /* =========================
-      Actions (RBAC Protected)
-  ========================== */
+  // Actions (RBAC Protected)
   const addTransaction = (newTx) => {
     if (role !== 'admin') {
       alert("Permission Denied: Only Admins can add transactions.");
       return;
     }
     // Spread the newTx to ensure we don't mutate state directly
-    setTransactions(prev => [{ 
-      ...newTx, 
+    setTransactions(prev => [{
+      ...newTx,
       id: `tx-${Date.now()}-${Math.floor(Math.random() * 1000)}`, // Stronger ID
       amount: Number(newTx.amount) // Ensure amount is stored as a number
     }, ...prev]);
