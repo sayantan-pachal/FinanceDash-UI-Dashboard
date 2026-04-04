@@ -7,6 +7,8 @@
 
 A high-performance, **React-based** financial management dashboard designed for precision and clarity. This project demonstrates well-structured frontend state management, safe and predictable client-side data handling, and dynamic data visualization.
 
+**Live Demo:** [FinanceDash UI](https://finance-dash-ui-dashboard.vercel.app)
+
 ---
 
 ## 💎 Key Features
