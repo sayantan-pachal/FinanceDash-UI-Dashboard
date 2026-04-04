@@ -5,7 +5,7 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-A high-performance, **React-based** financial management dashboard designed for precision and clarity. This project demonstrates advanced state management, secure data handling, and dynamic data visualization.
+A high-performance, **React-based** financial management dashboard designed for precision and clarity. This project demonstrates well-structured frontend state management, safe and predictable client-side data handling, and dynamic data visualization.
 
 ---
 
@@ -17,6 +17,21 @@ A high-performance, **React-based** financial management dashboard designed for 
 * **Persistent Data Layer:** Uses browser `localStorage` to ensure financial records remain saved even after a page refresh, simulating a database experience without the latency.
 * **Responsive Analytics:** Interactive **Balance Trend** lines and **Category Distribution** pie charts that update instantly as transactions are added or filtered.
 * **Data Portability:** Built-in **CSV Export** functionality allows users to download their financial reports for external accounting.
+
+---
+
+## 📌 Assignment Alignment
+
+This project was built specifically to address the evaluation requirements:
+
+- **Dashboard Overview:** Summary cards, balance trend chart, and category breakdown
+- **Transactions Management:** Search, filtering, hover-based edit/delete (Admin only)
+- **Role-Based UI:** Frontend-simulated Admin and Viewer roles
+- **Insights Section:** Highest expense, savings rate, and balance trends
+- **State Management:** Centralized via React Context with memoized selectors
+- **UX Considerations:** Responsive layout, dark mode, and graceful empty states
+
+All data is handled using mock/static data and localStorage, as per assignment guidelines.
 
 ---
 
@@ -39,6 +54,14 @@ As a developer, I focused on **Clean Code** principles:
 * **Atomic Components:** Highly reusable UI elements like `StatCard`, `FormSelect`, and `LegalLayout`.
 * **Performance Optimization:** Strategic use of `useMemo` and `useCallback` to prevent unnecessary re-renders during heavy filtering or search operations.
 * **Accessible UI:** Dark mode support and a focus on high-contrast typography to ensure the dashboard is readable in any environment.
+
+---
+
+## ⚠️ Assumptions & Limitations
+
+- This is a frontend-only project with no backend or authentication.
+- RBAC is simulated on the client side for demonstration purposes.
+- Data persistence is handled via localStorage instead of a database.
 
 ---
 
